@@ -21,4 +21,4 @@ jobs:
         uses: chenmozhijin/fcitx5-pyside@master
         with:
           plugins-path: ${{ env.Python_ROOT_DIR }}/lib/python3.12/site-packages/PySide6/plugins
-          PySide-version: "6.7.3" # Optional, can be omitted for auto-detection
+          PySide-version: "6.12" # Optional, can be omitted for auto-detection
