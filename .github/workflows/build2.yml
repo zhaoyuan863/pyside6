@@ -1,0 +1,24 @@
+name: Add fcitx5 Support to PySide6
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: debian-latest
+
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+
+      - name: Prepare
+        run: |
+            pip install -U PySide6
+
+      - name: Add fcitx5 Support to PySide
+        uses: chenmozhijin/fcitx5-pyside@master
+        with:
+          plugins-path: ${{ env.Python_ROOT_DIR }}/lib/python3.12/site-packages/PySide6/plugins
+          PySide-version: "6.7.3" # Optional, can be omitted for auto-detection
