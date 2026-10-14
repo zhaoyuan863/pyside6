@@ -1,0 +1,24 @@
+name: Build with Fcitx5 Support
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install PySide6
+        run: pip install PySide6==6.12.*
+
+      - name: Add Fcitx5 Support to PySide6
+        uses: chenmozhijin/fcitx5-pyside@master
+        with:
+          plugins-path: ${{ env.pythonLocation }}/lib/python3.12/site-packages/PySide6/plugins
+
+      # 后续你的构建/测试步骤...
